@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]> <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p> <![endif]-->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <a class="brand" href="#">Nashville Tech Calendar</a>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Overview</a></li>
+                            <li><a href="#">Browse events</a></li>
+                            <li><a href="#">Add an event</a></li>
+                            <li><a href="#">Import events</a></li>
+                            <li><a href="#">Browse venues</a></li>
+                        </ul>
+
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search events">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Venues</h1>
+
+            <form class="form-search">
+                <label for="venue-search">Find a venue:</label>
+                <input type="text" name="" id="venue-search" value="" class="input-medium search-query" />
+            </form>
+
+            <div class="well pull-right venues-map">
+                <img src="http://maps.googleapis.com/maps/api/staticmap?size=800x500&maptype=roadmap&markers=color:red|2227 Old Fort Parkway Murfreesboro TN 37129 US|Lea Avenue Nashville TN 37210|2120 8th Avenue Nashville TN 37204|210 Bridgeway Circle Nashville TN 37210&sensor=false" alt="Map of all venues" width="800" height="500" />
+            </div>
+
+            <ul class="venues-all">
+                <li>
+                    <p class="venue-name"><a href="#">Emma's Bistro Cafe</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Venue 1</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Venue 2</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Another Venue</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Something else</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Some hotel meeting room</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Vaco</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Teksystems</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">Centresource</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+                <li>
+                    <p class="venue-name"><a href="#">12th South Taproom</a></p>
+                    <p class="events-count">9 upcoming events</p>
+                </li>
+            </ul>
+        </div>
+
+        <footer>
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand">&copy; Nashvl.org 2012</a>
+
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Export venues as... <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">XML</a></li>
+                                    <li><a href="#">JSON</a></li>
+                                    <li><a href="#">KML</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>

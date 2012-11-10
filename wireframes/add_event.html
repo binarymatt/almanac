@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]> <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p> <![endif]-->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <a class="brand" href="#">Nashville Tech Calendar</a>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Overview</a></li>
+                            <li><a href="#">Browse events</a></li>
+                            <li><a href="#">Add an event</a></li>
+                            <li><a href="#">Import events</a></li>
+                            <li><a href="#">Browse venues</a></li>
+                        </ul>
+
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search events">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Add an event</h1>
+
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="event-name">Event name</label>
+                        <div class="controls">
+                            <input type="text" id="event-name" placeholder="Event name" name="name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event-venue">Venue</label>
+                        <div class="controls">
+                            <input type="text" id="event-venue" placeholder="Venue" name="venue">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">When</label>
+                        <div class="controls">
+                            <input class="input-small" type="text" value="01/05/2011" name="start-date" />
+                            <input class="input-mini" type="text" value="12:00am" name="start-time" />
+                            to
+                            <input class="input-small" type="text" value="05/08/2011" name="end-date" />
+                            <input class="input-mini" type="text" value="11:59pm" name="end-time" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event-website">Website</label>
+                        <div class="controls">
+                            <input type="text" id="event-website" placeholder="Website" name="website">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event-description">Description</label>
+                        <div class="controls">
+                            <textarea id="event-description" name="description" placeholder="Description"></textarea>
+                            <p><small>(Format text using <a href="http://www.simpleeditions.com/59001/markdown-an-introduction" target="_blank">Markdown</a> and HTML.)</small></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event-venue-details">Venue details</label>
+                        <div class="controls">
+                            <textarea id="event-venue-details" name="venue-details" placeholder="Venue details"></textarea>
+                            <p><small>(Event-specific details like the room number, or who to call to be let into the building.)</small></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="event-tags">Tags</label>
+                        <div class="controls">
+                            <input type="text" id="event-tags" placeholder="Tags" name="tags">
+                            <p><small>(Tags are comma-separated keywords that make it easier to find your event and boost its position in searches.)</small></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn" name="preview" id="event-preview">Preview</button>
+                            <button type="submit" class="btn" name="create" id="event-create">Create event</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <footer>
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand">&copy; Nashvl.org 2012</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
