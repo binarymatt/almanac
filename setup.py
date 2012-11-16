@@ -8,13 +8,16 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
+    'psycopg2',
     'SQLAlchemy',
     'transaction',
     'pyramid_tm',
     'pyramid_debugtoolbar',
     'zope.sqlalchemy',
     'waitress',
-    ]
+    'alembic',
+    'pyramid_jinja2'
+]
 
 setup(name='almanac',
       version='0.0',
