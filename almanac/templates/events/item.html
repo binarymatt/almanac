@@ -1,0 +1,5 @@
+<li>
+<a href="#" class="event-name">{{event.title}}</a><br />
+    {{event.start_time|localtime|strftime('%I:%M%p')}} - {{event.end_time|localtime|strftime('%I:%M%p')}}<br />
+    <a href="#" class="event-venue">{{event.venue}}</a>
+</li>

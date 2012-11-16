@@ -1,0 +1,30 @@
+footer .navbar-inner .container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.event-list {
+    padding-left: 5px;
+}
+
+.event-list li {
+    margin-bottom: 20px;
+}
+
+.event-name {
+    font-weight: bold;
+}
+
+.well.event-venue {
+    min-height: 300px;
+}
+
+.well.event-venue .pull-left.event-venue-map {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .well.event-venue .pull-left.event-venue-map {
+        float: none;
+    }
+}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero-unit">
+    <h1>Hi there.</h1>
+    <p>cal.nashvl.org is a unified <strong>calendar for the technology community of Nashville</strong>, TN. We are an all-volunteer effort and <strong>we encourage anyone to import, create, and edit events</strong>.</p>
+    <p><a class="btn btn-primary btn-large" href="#">Add an event &raquo;</a></p>
+</div>
+<h2>What's happening?</h2>
+<div class="row">
+    <div class="span4">
+        <h2>Today</h2>
+        <ol class="event-list today unstyled">
+            {% for event in today %}
+            {% include 'events/item.html' %}
+            <li>
+                <a href="#" class="event-name">Pynash Lunch</a><br />
+                11:30am - 12:30pm<br />
+                <a href="#" class="event-venue">12th South Taproom</a>
+                </li>
+            {% else %}
+            No events
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="span4">
+        <h2>Tomorrow</h2>
+        <ol class="event-list tomorrow unstyled">
+            {% for event in tomorrow %}
+            <li>
+                <a href="#" class="event-name">Pynash Lunch</a><br />
+                11:30am - 12:30pm<br />
+                <a href="#" class="event-venue">12th South Taproom</a>
+            </li>
+            {% else %}
+            No Events
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="span4">
+        <h2>Next two weeks</h2>
+
+        <ol class="event-day-list unstyled">
+            {% for group in later|groupby('day') %}
+            
+            <li>
+            <h3><span class="event-day">{{group.grouper.strftime('%A')}}</span> <span class="event-date">{{group.grouper.strftime('%b')}} {{group.grouper.day}} {{group.grouper.year}}</span></h3>
+                <ol class="event-list unstyled">
+                    {% for event in group.list %}
+                    {% include 'events/item.html' %}
+                    {% endfor %}
+                </ol>
+            </li>
+            {% else %}
+            No Events
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}
