@@ -1,34 +1,36 @@
-from pyramid.response import Response
+from datetime import timedelta, datetime
 from pyramid.view import view_config
+from pyramid_spine.utils import utcnow
 
-from sqlalchemy.exc import DBAPIError
+from almanac.models import Event
+def begin_day(dt):
+    return datetime(dt.year, dt.month, dt.day, 0)
 
-from .models import (
-    DBSession,
-    MyModel,
-    )
+@view_config(route_name='home', renderer='index.html')
+def index(request):
+    today = begin_day(utcnow())
+    #today = Time.zone.now.beginning_of_day
+    tomorrow = today + timedelta(days=1)
+    #tomorrow = today + 1.day
+    after_tomorrow = tomorrow + timedelta(days=1)
+    future_cutoff = today + timedelta(weeks=2)
+    future_cutoff = today + timedelta(weeks=4)
+    events = Event.query.all()
+    events = Event.query.filter(Event.start_time.between(today, future_cutoff))
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    try:
-        one = DBSession.query(MyModel).filter(MyModel.name=='one').first()
-    except DBAPIError:
-        return Response(conn_err_msg, content_type='text/plain', status_int=500)
-    return {'one':one, 'project':'almanac'}
-
-conn_err_msg = """\
-Pyramid is having a problem using your SQL database.  The problem
-might be caused by one of the following things:
-
-1.  You may need to run the "initialize_almanac_db" script
-    to initialize your database tables.  Check your virtual 
-    environment's "bin" directory for this script and try to run it.
-
-2.  Your database server may not be running.  Check that the
-    database server referred to by the "sqlalchemy.url" setting in
-    your "development.ini" file is running.
-
-After you fix the problem, please restart the Pyramid application to
-try it again.
-"""
+    times_to_events = {
+        "today": [],
+        "tomorrow": [],
+        "later": [],
+    }
+    #find all events between now and future_cutoff
+    for event in events:
+        if event.start_time < tomorrow:
+            times_to_events['today'].append(event)
+        elif event.start_time >= tomorrow and event.start_time < after_tomorrow:
+            times_to_events['tomorrow'].append(event)
+        else:
+            times_to_events['later'].append(event)
+    times_to_events['more'] = Event.query.filter(Event.start_time >= future_cutoff).order_by(Event.start_time.asc()).first()
+    return times_to_events
 
