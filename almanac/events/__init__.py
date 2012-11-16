@@ -1,0 +1,5 @@
+def includeme(config):
+    config.add_route('event.list', '')
+    config.add_route('event.new', '/new')
+    config.add_route('event.detail', '/{id}')
+    config.scan()
