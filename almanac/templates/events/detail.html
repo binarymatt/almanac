@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1><a href="#">{{event.title}}</a></h1>
+<h2>{{event.start_time|localtime|strftime("%A, %B %d, %Y at %I:%M%p")}} through {{event.end_time|localtime|strftime("%A, %B %d, %Y at %I:%M%p")}}
+
+<h3>Description</h3>
+{{event.description|markdown|safe}}
+
+<p><strong>Website:</strong> <a href="{{event.url}}" target="_blank">{{event.url}}</a></p>
+{#
+<p><strong>Tags:</strong> <a href="#">stuff1</a>, <a href="#">stuff2</a>, <a href="#">stuff3</a></p>
+#}
+<h3>Location</h3>
+<div class="well event-venue vcard">
+    <div class="pull-left event-venue-map">
+        <a href="http://maps.google.com/maps?q={{event.venue.full_address(True)}}" title="Click to go to Google Maps" target="_blank">
+            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{event.venue.full_address(True)}}&amp;zoom=13&amp;size=340x300&amp;maptype=roadmap&amp;&amp;markers=color:red%7C{{event.venue.full_address(True)}}&amp;sensor=false" alt="{{event.venue.full_address()}}" width="340" height="300">
+        </a>
+    </div>
+
+    <h4 class="fn org"><a href="#">{{event.venue}}</a></h4>
+    <div class="adr">
+        <div class="street-address">{{event.venue.street_address}}</div>
+        <span class="locality">{{event.venue.locality}}</span>,
+        <span class="region">{{event.venue.region}}</span>
+        <span class="postal-code">{{event.venue.postal_code}}</span>,
+        <span class="country-name">{{event.venue.country}}</span>
+        (<a target="_blank" href="http://maps.google.com/maps?q={{event.venue.full_address(True)}}">map</a>)
+      </div>
+        
+</div>
+
+<p>You can <a href="#">edit</a>, <a href="#">clone</a> or <a href="#">delete</a> this event.</p>
+<p>{{event|datestamp}}</p>
+{% endblock %}
+

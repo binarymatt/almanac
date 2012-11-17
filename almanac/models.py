@@ -1,3 +1,4 @@
+from urllib import quote_plus
 from sqlalchemy import (
     Column,
     Integer,
@@ -47,6 +48,7 @@ class Event(Base):
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
     source_id = Column(Integer, ForeignKey('sources.id'), nullable=True)
+    source = relationship("Source", backref=backref('events'))
     #TODO - setup as duplicate
     duplicate_of_id = Column(Integer, nullable=True)
     #duplicates = relationship("Event", backref=backref('canonical', remote_side=[id]))
@@ -91,3 +93,11 @@ class Venue(Base):
 
     def __repr__(self):
         return self.title
+
+    def full_address(self, quoted=False):
+        if any([self.street_address, self.locality, self.region, self.postal_code, self.country]):
+            ad = "%(street_address)s %(locality)s %(region)s %(postal_code)s %(country)s" % self.__dict__
+            if quoted:
+                ad = quote_plus(ad)
+            return ad
+
