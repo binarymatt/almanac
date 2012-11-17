@@ -1,3 +1,4 @@
+import os
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 from almanac.models import initialize_sql
@@ -5,9 +6,9 @@ from almanac.models import initialize_sql
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
-    #database_url = os.environ.get('DATABASE_URL')
-    #if database_url:
-    #    settings['sqlalchemy.url'] = database_url
+    database_url = os.environ.get('ALMANAC_DATABASE_URL')
+    if database_url:
+        settings['sqlalchemy.url'] = database_url
     engine = engine_from_config(settings, 'sqlalchemy.')
     initialize_sql(engine)
     config = Configurator(settings=settings)
