@@ -21,6 +21,7 @@ from sqlalchemy.orm import (
 from zope.sqlalchemy import ZopeTransactionExtension
 
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+SSession = scoped_session(sessionmaker())
 class Base(object):
     """Base class which provides automated table name
     and surrogate primary key column.
@@ -36,7 +37,14 @@ Base.query = DBSession.query_property()
 
 def initialize_sql(engine):
     DBSession.configure(bind=engine)
+    SSession.configure(bind=engine)
     Base.metadata.bind = engine
+
+from sqlalchemy import event
+
+def my_load_listener(target, context):
+    print target
+    print "on load!"
 
 class Event(Base):
     title = Column(String)

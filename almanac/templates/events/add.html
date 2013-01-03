@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add an event</h1>
+
+<form class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="event-name">Event name</label>
+            <div class="controls">
+                <input type="text" id="event-name" placeholder="Event name" name="name">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event-venue">Venue</label>
+            <div class="controls">
+                <input type="text" id="event-venue" placeholder="Venue" name="venue">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">When</label>
+            <div class="controls">
+                <input class="input-small" type="text" value="01/05/2011" name="start-date">
+                <input class="input-mini" type="text" value="12:00am" name="start-time">
+                to
+                <input class="input-small" type="text" value="05/08/2011" name="end-date">
+                <input class="input-mini" type="text" value="11:59pm" name="end-time">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event-website">Website</label>
+            <div class="controls">
+                <input type="text" id="event-website" placeholder="Website" name="website">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event-description">Description</label>
+            <div class="controls">
+                <textarea id="event-description" name="description" placeholder="Description"></textarea>
+                <p><small>(Format text using <a href="http://www.simpleeditions.com/59001/markdown-an-introduction" target="_blank">Markdown</a> and HTML.)</small></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event-venue-details">Venue details</label>
+            <div class="controls">
+                <textarea id="event-venue-details" name="venue-details" placeholder="Venue details"></textarea>
+                <p><small>(Event-specific details like the room number, or who to call to be let into the building.)</small></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="event-tags">Tags</label>
+            <div class="controls">
+                <input type="text" id="event-tags" placeholder="Tags" name="tags">
+                <p><small>(Tags are comma-separated keywords that make it easier to find your event and boost its position in searches.)</small></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn" name="preview" id="event-preview">Preview</button>
+                <button type="submit" class="btn" name="create" id="event-create">Create event</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
