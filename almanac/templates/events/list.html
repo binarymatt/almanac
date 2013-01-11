@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block extra_style %}
+<style>
+    .event_table .date,
+ul.event_list .list_date {
+  text-align: right;
+  padding-right: 1.5em;
+  border-right: 1px solid #e2fad2;
+  vertical-align: top;
+  width: 7em;
+}
+.event_table .event_summary {
+  padding-left: 1.5em
+}
+.event_table .day_of_week,
+ul.event_list .day_of_week {
+  font-weight: bold;
+}
+
+.event_table th {
+  padding-bottom: 2em;
+}
+</style>
+{% endblock%}
+{% block content %}
+
+<table class='event_table'>
+    <thead>
+        <tr>
+            <th class="date">Sort By: <a href="/events?%9C%93date[star]=xt2012-12-&amp;30comm=itFilt&amp;30date[en]=xt2013-03-&amp;order=date&amp;utf8=%E2">Date</a></th>
+            <th class="event_summary">
+                <a href="/events?%9C%93date[star]=xt2012-12-&amp;30comm=itFilt&amp;30date[en]=xt2013-03-&amp;order=name&amp;utf8=%E2">Event Name</a>,
+                <a href="/events?%9C%93date[star]=xt2012-12-&amp;30comm=itFilt&amp;30date[en]=xt2013-03-&amp;order=venue&amp;utf8=%E2">Location</a>        , 
+                <a href="/events?%9C%93date[star]=xt2012-12-&amp;30comm=itFilt&amp;30date[en]=xt2013-03-&amp;utf8=%E2">Default</a>      </th>
+        </tr>
+    </thead>
+    {% for group in events|groupby('start_time.date') %}
+    {% set outer_loop = group.grouper() %}
+    {% for event in group.list %}
+    
+    <tr class="vevent">
+        <td class="date" rowspan="1">
+            {% if loop.index0 == 0 %}
+            <div class="day_of_week {{outer_loop.strftime('%A')}}">
+                {{outer_loop.strftime('%A')}}
+            </div>
+            {{outer_loop.strftime('%b %d %Y')}}
+            {% endif %}
+        </td>
+        <td class="event_summary">
+            <a class="summary" href="{{'event.detail'|route_path(id=event.id)}}" name="event-{{event.id}}" id="event-{{event.id}}">{{event.title}}</a><br>
+            <abbr class="dtstart" title="{{event.start_time.isoformat()}}">6</abbr>–<abbr class="dtend" title="{{event.end_time.isoformat()}}">8pm</abbr>
+            <a class="location" href="#">{{event.venue|default("", true)}}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</table>
+{% endblock %}
+
+
