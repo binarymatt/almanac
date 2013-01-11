@@ -5,6 +5,6 @@ def datestamp(item):
     if item.source is None:
         stamp = stamp % " added directly to nashvl cal"
     else:
-        stamp = stamp % "imported from %s" % item.source.name
+        stamp = stamp % "imported from %s" % item.source.title
     stamp = stamp + " <strong>%s</strong>" % item.created_at.strftime("%A, %B %d, %Y at %I:%M%p")
     return Markup(stamp)
