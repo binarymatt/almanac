@@ -68,6 +68,12 @@ class Event(Base):
     def day(self):
         return self.start_time.date()
 
+    def __unicode__(self):
+        return self.title
+
+    def __repr__(self):
+        return self.title.encode(errors='ignore')
+
 class Source(Base):
     title = Column(String)
     url = Column(String)
@@ -75,6 +81,9 @@ class Source(Base):
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
     reimport = Column(Boolean)
+
+    def __repr__(self):
+        return self.title
 
 class Venue(Base):
     title = Column(String)
