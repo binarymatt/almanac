@@ -10,6 +10,7 @@
 {#
 <p><strong>Tags:</strong> <a href="#">stuff1</a>, <a href="#">stuff2</a>, <a href="#">stuff3</a></p>
 #}
+{% if event.venu %}
 <h3>Location</h3>
 <div class="well event-venue vcard">
     <div class="pull-left event-venue-map">
@@ -28,7 +29,8 @@
         (<a target="_blank" href="http://maps.google.com/maps?q={{event.venue.full_address(True)}}">map</a>)
       </div>
         
-</div>
+  </div>
+{% endif %}
 
 <p>You can <a href="#">edit</a>, <a href="#">clone</a> or <a href="#">delete</a> this event.</p>
 <p>{{event|datestamp}}</p>
