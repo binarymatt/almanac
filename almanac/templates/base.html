@@ -10,14 +10,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="{{'almanac:static/css/bootstrap.min.css'|static_path}}">
+        <link rel="stylesheet" href="{{'almanac:static/css/bootstrap.css'|static_path}}">
         <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
         </style>
-        <link rel="stylesheet" href="{{'almanac:static/css/bootstrap-responsive.min.css'|static_path}}">
+        <link rel="stylesheet" href="{{'almanac:static/css/bootstrap-responsive.css'|static_path}}">
         <link rel="stylesheet" href="{{'almanac:static/css/main.css'|static_path}}">
         {% block extra_style %}
         {%endblock%}
@@ -82,8 +82,11 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{'almanac:static/js/vendor/jquery-1.8.2.min.js'|static_path}}"><\/script>')</script>
-        <script src="{{'almanac:static/js/vendor/bootstrap.min.js'|static_path}}"></script>
+        <script src="{{'almanac:static/js/bootstrap.min.js'|static_path}}"></script>
+        <script src="{{'almanac:static/js/bootstrap-datepicker.js'|static_path}}"></script>
         <script src="{{'almanac:static/js/main.js'|static_path}}"></script>
+        {% block extra_js %}
+        {%endblock%}
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
