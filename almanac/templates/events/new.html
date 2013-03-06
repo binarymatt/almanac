@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% import 'forms.html' as wtf%}
+{% block extra_style %}
+<link rel="stylesheet" href="{{'almanac:static/css/datepicker.css'|static_path}}">
+{%endblock%}
+{% block extra_js %}
+<script>
+    $(function() {
+        $('#venue').typeahead({
+            source: {{venues|jsonify|safe}}
+        });
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        })
+    });
+</script>
+{% endblock %}
+{% block content %}
+<h1>Add an event</h1>
+<form method="POST" class='form-horizontal'>
+    <fieldset>
+        {{wtf.input(form.name, placeholder="Event name")}}
+        {{wtf.input(form.venue, placeholder="Venue")}}
+        <div class="control-group">
+            <label class="control-label">When</label>
+            <div class="controls">
+                {{form.start_time.date(class="input-small datepicker")}}
+                {{form.start_time.time(class="input-mini")}}
+                to
+                {{form.end_time.date(class="input-small datepicker")}}
+                {{form.end_time.time(class="input-mini")}}
+            </div>
+        </div>
+
+        {{wtf.input(form.website, placeholder="Website")}}
+        {{wtf.input(form.description, placeholder="Description")}}
+        {{wtf.input(form.venue_details, placeholder="Venue Details")}}
+        
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn" name="preview" id="event-preview">Preview</button>
+                <button type="submit" class="btn" name="create" id="event-create">Create event</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock %}
